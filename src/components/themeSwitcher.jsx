@@ -14,7 +14,7 @@ const ThemeSwitcher = () => {
   };
 
   return (
-      <span onClick={handleToggle} className='border border-[--secondary-color] p-1 rounded-full shadow-md'>{theme === 'light' ? <RiMoonClearFill/> : <BiSun fill='skyblue'/> }</span>
+      <span onClick={handleToggle} className='cursor-pointer border border-[--secondary-color] p-1 rounded-full shadow-md'>{theme === 'light' ? <RiMoonClearFill/> : <BiSun fill='skyblue'/> }</span>
   );
 };
 
