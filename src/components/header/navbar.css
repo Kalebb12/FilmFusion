@@ -1,0 +1,7 @@
+.search{
+    background-image:url(/ic--round-search.svg) ;
+    background-repeat: no-repeat;
+    background-position-x: 320px;
+    background-position-y: 5px;
+    padding-right: 28px !important;
+}

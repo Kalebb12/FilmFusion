@@ -8,3 +8,29 @@
   box-sizing: border-box;
   scroll-behavior: smooth;
 }
+
+:root {
+  --primary-color: #333; /* default primary color */
+  --secondary-color: #666; /* default secondary color */
+  --background-color: #fff; /* default background color */
+  --text-color: #333; /* default text color */
+}
+
+body[data-theme="dark"] {
+  --primary-color: #fff; /* dark theme primary color */
+  --secondary-color: #aaa; /* dark theme secondary color */
+  --background-color: #101010; /* dark theme background color */
+  --text-color: #fff; /* dark theme text color */
+}
+
+body[data-theme="light"] {
+  --primary-color: #333; /* light theme primary color */
+  --secondary-color: #666; /* light theme secondary color */
+  --background-color: #fff; /* light theme background color */
+  --text-color: #333; /* light theme text color */
+}
+
+body{
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
