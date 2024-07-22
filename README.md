@@ -1,6 +1,15 @@
 # FilmFusion
 React app for movie reviews ...
 
+## Getting Started
+
+To get started, run the following command:npm i 
+to install necessary dependencies
+
+## Deployment
+
+To deploy your project, run the following command:npm run dev
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
