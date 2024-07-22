@@ -11,10 +11,9 @@ const Navbar = () => {
             method: 'GET',
             headers: {
               accept: 'application/json',
-              Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiOGZiMzM4OTY0NWRlNzYzZmQyZDIyNzY3Zjc4NTAxMCIsIm5iZiI6MTcyMTU4MTAyMi42MDI5NjMsInN1YiI6IjY2OWQzYzk0NjU4Y2EwNWViYzZjODg1NCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.kcnChUsDnPC0425rJhkIb8OkPqUWt7Nj2lBCQSym5Y4`
+              Authorization: `Bearer ${import.meta.env.VITE_READ_ACCESS}`
             }
           };
-        //   ${import.meta.env.VITE_READ_ACCESS}
         fetch(`https://api.themoviedb.org/3/search/movie?query=${search}&include_adult=false&language=en-US&page=1`, options)
         .then(response => response.json())
         .then(response => console.log(response))
