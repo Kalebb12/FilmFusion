@@ -52,3 +52,17 @@ body{
   background-position-y: 5px;
   padding-right: 28px !important;
 }
+
+/* from popular  */
+.movie-prev::-webkit-scrollbar{
+  display: none;
+}
+
+
+.movie-prev{
+  scroll-snap-type: x mandatory;
+}
+
+.movie-prev div{
+  scroll-snap-align: start;
+}

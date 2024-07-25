@@ -1,12 +1,13 @@
 import './App.css'
-import Navbar from './components/header/navBar'
+import Navbar from './components/navBar'
+import Popular from './pages/popular'
 function App() {
 
   return (
     <div>
       <div>
         <Navbar />
-        <h1 className='text-3xl  font-bold underline '>hello nhgf</h1>
+        <Popular/>
       </div>
     </div>
   )

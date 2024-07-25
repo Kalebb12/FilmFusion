@@ -1,5 +1,5 @@
 import { BsBookmarkPlusFill } from "react-icons/bs";
-import ThemeSwitcher from "../themeSwitcher";
+import ThemeSwitcher from "./themeSwitcher";
 import { useEffect, useState } from "react";
 const Navbar = () => {
   const [search, setSearch] = useState("");
@@ -25,7 +25,7 @@ const Navbar = () => {
   }, [search]);
   return (
     <div>
-      <nav className="container py-3 max-w-custom">
+      <nav className="container px-10 py-3 max-w-custom">
         <div className="flex justify-between items-center">
           logo
           <div className="hidden sm:flex items-center gap-2">
