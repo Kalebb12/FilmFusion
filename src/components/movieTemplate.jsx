@@ -1,17 +1,17 @@
 import { BiStar } from "react-icons/bi";
 import { FaPlay } from "react-icons/fa";
 import { FaStar } from "react-icons/fa6";
+import Skeleton from "react-loading-skeleton";
 import { Link } from "react-router-dom";
-
-
+import 'react-loading-skeleton/dist/skeleton.css'
 const MovieTemplate = ({ movie ,index}) => {
-  const {title , poster_path , popularity} = movie
   return (
+    
     <div className="min-w-64 bg-[--hover-color]">
       <img
         draggable="false"
         src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-        className="w-full object-cover"
+        className="w-full  object-cover"
         alt="img - poster"
       />
       <div className="p-3">

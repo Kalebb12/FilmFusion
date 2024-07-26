@@ -5,6 +5,7 @@ import {
   MdOutlineArrowBackIos,
   MdOutlineArrowForwardIos,
 } from "react-icons/md";
+import CardSkeleton from "../components/skeleton";
 const Popular = () => {
   const [data, setData] = useState([]);
   const [err, setErr] = useState(null);
@@ -42,18 +43,18 @@ const Popular = () => {
     fetchPopularMovies();
   }, []);
   const prevScroll = () => {
-    const preview = document.querySelector(".movie-prev")
+    const preview = document.querySelector(".movie-prev");
     preview.scrollBy({
-        left: -1000,
-        behavior: 'smooth'
+      left: -1000,
+      behavior: "smooth",
     });
   };
 
   const forwardScroll = () => {
-    const preview = document.querySelector(".movie-prev")
+    const preview = document.querySelector(".movie-prev");
     preview.scrollBy({
-        left: 1000,
-        behavior: 'smooth'
+      left: 1000,
+      behavior: "smooth",
     });
   };
 
@@ -66,29 +67,36 @@ const Popular = () => {
         </h1>
       </div>
       <div className="movies mt-3">
-        {loading && <p>Loading....</p>}
         {err && <p>Error: {err.message}</p>}
         <div className=" relative">
-          <div className="border absolute top-[30%] right-[98%] p-2" onClick={prevScroll}>
+          <div
+            className="border absolute top-[30%] right-[98%] p-2 z-10"
+            onClick={prevScroll}
+          >
             <MdOutlineArrowBackIos
               size={40}
               className="hover:text-orange-300 transition"
-              
             />
           </div>
-          <div className="flex gap-3 w-full overflow-x-scroll movie-prev">
+          <div className="flex gap-3 w-full overflow-x-scroll movie-prev ">
+            {loading && Array(20).fill(null).map((_, i) => (
+              <CardSkeleton key={i} />
+            ))}
             {data.length > 0 &&
               data.map((movie, i) => {
                 return <MovieTemplate movie={movie} index={i + 1} key={i} />;
               })}
           </div>
           <div className="p-10">
-          <div className="border absolute top-[30%] left-[98%] p-2" onClick={forwardScroll}>
-            <MdOutlineArrowForwardIos
-              size={40}
-              className="hover:text-orange-300 transition"
-            />
-          </div>
+            <div
+              className="border absolute top-[30%] left-[98%] p-2 z-10"
+              onClick={forwardScroll}
+            >
+              <MdOutlineArrowForwardIos
+                size={40}
+                className="hover:text-orange-300 transition"
+              />
+            </div>
           </div>
         </div>
       </div>
