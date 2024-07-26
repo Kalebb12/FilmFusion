@@ -6,7 +6,7 @@ import {
 import CardSkeleton from "../components/skeleton";
 import UseFetch from "../hooks/useFetch";
 import { useContext, useState } from "react";
-import MovieDetails from "../components/moveDetailsModal";
+import MovieDetails from "../components/movieDetailsModal";
 import { GlobalContext } from "../context/context";
 const Popular = () => {
   const {data ,err , loading} = UseFetch("https://api.themoviedb.org/3/discover/movie")
@@ -35,6 +35,7 @@ const Popular = () => {
 
   const closeModal = () =>{
     setMovieDetails(false)
+    
   }
   return (
     <div className="p-10">

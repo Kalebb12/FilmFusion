@@ -7,7 +7,7 @@ import 'react-loading-skeleton/dist/skeleton.css'
 const MovieTemplate = ({ movie ,index , showDetails}) => {
   return (
     
-    <div className="min-w-64 bg-[--hover-color]">
+    <div className="min-w-64 bg-[--hover-color]" onClick={()=>{showDetails(movie.id)}}>
       <img
         draggable="false"
         src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
