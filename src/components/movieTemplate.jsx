@@ -4,7 +4,7 @@ import { FaStar } from "react-icons/fa6";
 import Skeleton from "react-loading-skeleton";
 import { Link } from "react-router-dom";
 import 'react-loading-skeleton/dist/skeleton.css'
-const MovieTemplate = ({ movie ,index}) => {
+const MovieTemplate = ({ movie ,index , showDetails}) => {
   return (
     
     <div className="min-w-64 bg-[--hover-color]">
@@ -26,7 +26,7 @@ const MovieTemplate = ({ movie ,index}) => {
         </div>
 
         <div className="h-14 w-full overflow-hidden text-ellipsis">
-            <span className="hover:underline">{index}. <a href="#" className=" leading-snug">{movie.title}</a></span>
+            <span className="hover:underline cursor-pointer" onClick={()=>{showDetails(movie.id)}}>{index}. {movie.title}</span>
         </div>
 
         <div className="flex flex-col gap-1">

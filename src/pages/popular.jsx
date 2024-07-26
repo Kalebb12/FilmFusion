@@ -1,47 +1,22 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
 import MovieTemplate from "../components/movieTemplate";
 import {
   MdOutlineArrowBackIos,
   MdOutlineArrowForwardIos,
 } from "react-icons/md";
 import CardSkeleton from "../components/skeleton";
+import UseFetch from "../hooks/useFetch";
+import { useContext, useState } from "react";
+import MovieDetails from "../components/moveDetailsModal";
+import { GlobalContext } from "../context/context";
 const Popular = () => {
-  const [data, setData] = useState([]);
-  const [err, setErr] = useState(null);
-  const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    const fetchPopularMovies = () => {
-      const options = {
-        method: "GET",
-        url: "https://api.themoviedb.org/3/discover/movie",
-        params: {
-          include_adult: "true",
-          include_video: "true",
-          language: "en-US",
-          page: "1",
-          sort_by: "popularity.desc",
-        },
-        headers: {
-          accept: "application/json",
-          Authorization: `Bearer ${import.meta.env.VITE_READ_ACCESS}`,
-        },
-      };
+  const {data ,err , loading} = UseFetch("https://api.themoviedb.org/3/discover/movie")
+  const [movieDetails , setMovieDetails] = useState(false)
+  const {setId} = useContext(GlobalContext)
+  const showDetails = (id) =>{
+    setMovieDetails(true)
+    setId(id)
+  }
 
-      axios
-        .request(options)
-        .then(function (response) {
-          setData(response.data.results);
-        })
-        .catch(function (error) {
-          setErr(error);
-        })
-        .finally(function () {
-          setLoading(false);
-        });
-    };
-    fetchPopularMovies();
-  }, []);
   const prevScroll = () => {
     const preview = document.querySelector(".movie-prev");
     preview.scrollBy({
@@ -58,6 +33,9 @@ const Popular = () => {
     });
   };
 
+  const closeModal = () =>{
+    setMovieDetails(false)
+  }
   return (
     <div className="p-10">
       <div className="flex items-center">
@@ -84,7 +62,7 @@ const Popular = () => {
             ))}
             {data.length > 0 &&
               data.map((movie, i) => {
-                return <MovieTemplate movie={movie} index={i + 1} key={i} />;
+                return <MovieTemplate movie={movie} index={i + 1} key={i}  showDetails={showDetails}/>;
               })}
           </div>
           <div className="p-10">
@@ -100,6 +78,7 @@ const Popular = () => {
           </div>
         </div>
       </div>
+      {movieDetails && <MovieDetails closeModal={closeModal }/>}
     </div>
   );
 };
