@@ -7,7 +7,7 @@ import 'react-loading-skeleton/dist/skeleton.css'
 const MovieTemplate = ({ movie ,index , showDetails}) => {
   return (
     
-    <div className="min-w-64 bg-[--hover-color]" onClick={()=>{showDetails(movie.id)}}>
+    <div className="min-w-64 bg-[--hover-color]">
       <img
         draggable="false"
         src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
@@ -26,12 +26,12 @@ const MovieTemplate = ({ movie ,index , showDetails}) => {
         </div>
 
         <div className="h-14 w-full overflow-hidden text-ellipsis">
-            <span className="hover:underline cursor-pointer" onClick={()=>{showDetails(movie.id)}}>{index}. {movie.title}</span>
+            <span className="hover:underline cursor-pointer">{index}. {movie.title}</span>
         </div>
 
         <div className="flex flex-col gap-1">
             <button className="w-full px-5 py-2 rounded-lg bg-[--border-color] hover:bg-[--secondary-color] text-blue-500">+ WatchList</button>
-            <button className="flex items-center px-5 py-2 gap-3 w-full justify-center rounded-lg hover:bg-[--secondary-color]"><FaPlay /> Trailer</button>
+            <button className="flex items-center px-5 py-2 gap-3 w-full justify-center rounded-lg hover:bg-[--secondary-color]" onClick={()=>{showDetails(movie.id)}}><FaPlay /> Trailer</button>
         </div>
       </div>
     </div>

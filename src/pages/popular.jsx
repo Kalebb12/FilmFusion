@@ -8,14 +8,17 @@ import UseFetch from "../hooks/useFetch";
 import { useContext, useState } from "react";
 import MovieDetails from "../components/movieDetailsModal";
 import { GlobalContext } from "../context/context";
+import { AnimatePresence } from "framer-motion";
 const Popular = () => {
-  const {data ,err , loading} = UseFetch("https://api.themoviedb.org/3/discover/movie")
-  const [movieDetails , setMovieDetails] = useState(false)
-  const {setId} = useContext(GlobalContext)
-  const showDetails = (id) =>{
-    setMovieDetails(true)
-    setId(id)
-  }
+  const { data, err, loading } = UseFetch(
+    "https://api.themoviedb.org/3/discover/movie"
+  );
+  const [movieDetails, setMovieDetails] = useState(false);
+  const { setId } = useContext(GlobalContext);
+  const showDetails = (id) => {
+    setMovieDetails(true);
+    setId(id);
+  };
 
   const prevScroll = () => {
     const preview = document.querySelector(".movie-prev");
@@ -33,10 +36,9 @@ const Popular = () => {
     });
   };
 
-  const closeModal = () =>{
-    setMovieDetails(false)
-    
-  }
+  const closeModal = () => {
+    setMovieDetails(false);
+  };
   return (
     <div className="p-10">
       <div className="flex items-center">
@@ -58,12 +60,20 @@ const Popular = () => {
             />
           </div>
           <div className="flex gap-3 w-full overflow-x-scroll movie-prev ">
-            {loading && Array(20).fill(null).map((_, i) => (
-              <CardSkeleton key={i} />
-            ))}
+            {loading &&
+              Array(20)
+                .fill(null)
+                .map((_, i) => <CardSkeleton key={i} />)}
             {data.length > 0 &&
               data.map((movie, i) => {
-                return <MovieTemplate movie={movie} index={i + 1} key={i}  showDetails={showDetails}/>;
+                return (
+                  <MovieTemplate
+                    movie={movie}
+                    index={i + 1}
+                    key={i}
+                    showDetails={showDetails}
+                  />
+                );
               })}
           </div>
           <div className="p-10">
@@ -79,7 +89,9 @@ const Popular = () => {
           </div>
         </div>
       </div>
-      {movieDetails && <MovieDetails closeModal={closeModal }/>}
+      <AnimatePresence>
+        {movieDetails && <MovieDetails closeModal={closeModal} />}
+      </AnimatePresence>
     </div>
   );
 };
