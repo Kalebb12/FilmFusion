@@ -91,7 +91,7 @@ const MovieDetails = ({ closeModal }) => {
               {movieDetails.overview}
             </div>
             :
-            <Skeleton width="100%" height={300} baseColor="var(--border-color)" />
+            <Skeleton width="100%" height={50} baseColor="var(--border-color)" />
         }
       </div>
 
