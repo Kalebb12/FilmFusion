@@ -90,7 +90,8 @@ const MovieDetails = ({ closeModal }) => {
             <div className="text-[--border-color] text-sm">
               {movieDetails.overview}
             </div>
-            :null
+            :
+            <Skeleton width="100%" height={300} baseColor="var(--border-color)" />
         }
       </div>
 
